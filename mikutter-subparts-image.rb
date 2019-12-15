@@ -321,7 +321,7 @@ Plugin.create :"mikutter-subparts-image" do
         # 閲覧注意画像か？
         icons = if message.respond_to?(:sensitive?) && message.sensitive? && UserConfig[:subparts_image_mozaic_sensitive]
           # モザイク画像を生成する
-      	  @main_icons.map { |_|
+      	  @main_icons.compact.map { |_|
             _.scale(16, 16).scale(_.width, _.height)
           }
         else
