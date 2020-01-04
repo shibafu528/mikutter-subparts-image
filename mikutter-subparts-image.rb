@@ -19,28 +19,6 @@ Plugin.create :"mikutter-subparts-image" do
     boolean(_("閲覧注意画像をぼかして表示する"), :subparts_image_mozaic_sensitive)
   end
 
-
-  defimageopener('youtube thumbnail (shrinked)', /^http:\/\/youtu.be\/([^\?\/\#]+)/) do |url|
-    /^http:\/\/youtu.be\/([^\?\/\#]+)/.match(url)
-    open("http://img.youtube.com/vi/#{$1}/0.jpg")
-  end
-
-  defimageopener('youtube thumbnail', /^https?:\/\/www\.youtube\.com\/watch\?v=([^\&]+)/) do |url|
-    /^https?:\/\/www\.youtube\.com\/watch\?v=([^\&]+)/.match(url)
-    open("http://img.youtube.com/vi/#{$1}/0.jpg")
-  end
-
-  defimageopener('niconico video thumbnail(shrinked)', /^http:\/\/nico.ms\/sm([0-9]+)/) do |url|
-    /^http:\/\/nico.ms\/sm([0-9]+)/.match(url)
-    open("http://tn-skr#{($1.to_i % 4) + 1}.smilevideo.jp/smile?i=#{$1}")
-  end
-
-  defimageopener('niconico video thumbnail', /nicovideo\.jp\/watch\/sm([0-9]+)/) do |url|
-    /nicovideo\.jp\/watch\/sm([0-9]+)/.match(url)
-    open("http://tn-skr#{($1.to_i % 4) + 1}.smilevideo.jp/smile?i=#{$1}")
-  end
-
-
   # サブパーツ
   class Gdk::SubPartsImage < Gdk::SubParts
     register
